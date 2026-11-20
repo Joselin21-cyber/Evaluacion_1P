@@ -1,1 +1,88 @@
+# Sistema de venta de entradas para el Cine UTC
+# Capacidad total: 50 asientos
 
+asientos_disponibles = 50
+entradas_vendidas = 0
+recaudacion_total = 0
+
+while True:
+    print("\n===== MENU DEL CINE =====")
+    print("1. Comprar entrada")
+    print("2. Consultar asientos disponibles")
+    print("3. Consultar entradas vendidas")
+    print("4. Consultar recaudación total")
+    print("5. Salir")
+    
+    opcion = input("Seleccione una opcion (1-5):")
+    
+    match opcion:
+        # Comprar entradas
+        case "1":
+            print("\nTipos de entrada:")
+            print("A. Adulto ($5.00)")
+            print("N. Niño ($2.00)")
+            print("M. Adulto Mayor ($2.50)")
+
+            tipo = input("Seleccione el tipo de entrada: ").upper()
+
+            match opcion:
+            
+                    # Comprar entradas
+                    case "1":
+                        print("\nTipos de entrada:")
+                        print("A. Adulto ($5.00)")
+                        print("N. Niño ($2.00)")
+                        print("M. Adulto Mayor ($2.50)")
+            
+                        tipo = input("Seleccione el tipo de entrada: ").upper()
+            
+                        match tipo:
+                            case "A":
+                                precio = 5
+                            case "N":
+                                precio = 2
+                            case "M":
+                                precio = 2.5
+                            case _:
+                                print("Tipo de entrada no válido.")
+                                continue
+            
+                        cantidad = int(input("Ingrese la cantidad de entradas: "))
+            
+                        # Verificar disponibilidad
+                        if cantidad > asientos_disponibles:
+                            print("No hay suficientes asientos disponibles.")
+                        elif cantidad <= 0:
+                            print("La cantidad debe ser mayor a cero.")
+                        else:
+                            total_pagar = cantidad * precio
+            
+                            # Actualizar datos
+                            asientos_disponibles -= cantidad
+                            entradas_vendidas += cantidad
+                            recaudacion_total += total_pagar
+            
+                            print(f"\nTotal a pagar: ${total_pagar:.2f}")
+                            print("Compra realizada con éxito.")
+                            print(f"Asientos disponibles: {asientos_disponibles}")
+                            # Mostrar datos disponibles 
+                            
+                    case "2":
+                     print(f"Asientos disponibles: {asientos_disponibles}")
+                            
+                    # Mostrar entradas vendidas
+                    case "3":
+                     print(f"Entradas vendidas: {entradas_vendidas}")
+                            
+                    # Mostrar dinero recaudado
+                    case "4":
+                     print(f"Recaudación total: ${recaudacion_total:.2f}")
+                     
+                     # Salir del programa 
+                    case "5":
+                     print ("Gracias por utilizar el sistema.")
+                     
+                     # Opcion incorrecta
+                    case _:
+                        print("Opcion no valida.")
+                              
